@@ -1,0 +1,23 @@
+<% title "Video" %>
+
+<h2>
+<%= @video.title %>
+</h2>
+
+<%= raw(@video.embed) %>
+
+<p>
+  <%= @video.description %>
+</p>
+
+<p>
+	Submitted by:
+	<%= @video.user.login %>
+</p>
+
+
+<p>
+  <%= link_to "Edit", edit_video_path(@video) %> |
+  <%= link_to "Destroy", @video, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", videos_path %>
+</p>

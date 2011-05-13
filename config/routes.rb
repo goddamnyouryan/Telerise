@@ -1,6 +1,9 @@
 Telerise::Application.routes.draw do
-  get "home/index"
   
+  resources :users
+
+  resources :videos
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   

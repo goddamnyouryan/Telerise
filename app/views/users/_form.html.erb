@@ -1,0 +1,10 @@
+<h2>Please Enter A Username</h2>
+
+<%= form_for @user do |f| %>
+
+  <p>
+    <%= f.text_field :login %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>

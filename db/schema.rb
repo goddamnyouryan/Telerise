@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422022923) do
+ActiveRecord::Schema.define(:version => 20110513080744) do
 
   create_table "users", :force => true do |t|
     t.string   "provider"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(:version => 20110422022923) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.text     "description"
+    t.string   "provider"
+    t.integer  "height"
+    t.integer  "width"
+    t.text     "embed"
+    t.string   "thumb"
+    t.integer  "thumb_height"
+    t.integer  "thumb_width"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
 end

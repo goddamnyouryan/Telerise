@@ -10,6 +10,7 @@ gem 'embedly'
 gem 'json'
 gem 'omniauth'
 gem "oa-openid"
+gem "nifty-generators", :group => :development
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -33,3 +34,4 @@ gem "oa-openid"
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test
