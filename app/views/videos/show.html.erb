@@ -15,9 +15,23 @@
 	<%= @video.user.login %>
 </p>
 
+<h2>Comments</h2>
 
-<p>
-  <%= link_to "Edit", edit_video_path(@video) %> |
-  <%= link_to "Destroy", @video, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", videos_path %>
-</p>
+<% if current_user %>
+	<%= form_for @comment do |f| %>
+		<%= f.hidden_field :video_id, :value => @video.id %>
+	  <p>
+	    <%= f.text_area :message, :placeholder => "New Comment...", :style => "height:60px;" %>
+	  </p>
+	  <p><%= f.submit %></p>
+	<% end %>
+<% end %>
+
+<ul>
+	<% @video.comments.each do |comment| %>
+		<li>
+			<h4><%= comment.message %></h4>
+			<h5><%= comment.user.login %></h5>
+		</li>
+	<% end %>
+</ul>

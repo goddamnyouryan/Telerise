@@ -1,15 +1,15 @@
 Telerise::Application.routes.draw do
-  
-  resources :users
 
-  resources :videos
+  resources :comments
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   
   resources :sessions
+  resources :users
+  resources :videos
 
-   root :to => "home#index"
+  root :to => "videos#index"
 
   # See how all your routes lay out with "rake routes"
 

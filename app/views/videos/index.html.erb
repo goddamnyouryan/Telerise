@@ -1,35 +1,16 @@
 <% title "Videos" %>
+<% if current_user %>
+	<p><%= link_to "Submit New Video", new_video_path %></p>
+<% end %>
 
-<table>
-  <tr>
-    <th>Url</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Provider</th>
-    <th>Height</th>
-    <th>Width</th>
-    <th>Embed</th>
-    <th>Thumb</th>
-    <th>Thumb Height</th>
-    <th>Thumb Width</th>
-  </tr>
-  <% for video in @videos %>
-    <tr>
-      <td><%= video.url %></td>
-      <td><%= video.title %></td>
-      <td><%= video.description %></td>
-      <td><%= video.provider %></td>
-      <td><%= video.height %></td>
-      <td><%= video.width %></td>
-      <td><%= video.embed %></td>
-      <td><%= video.thumb %></td>
-      <td><%= video.thumb_height %></td>
-      <td><%= video.thumb_width %></td>
-      <td><%= link_to "Show", video %></td>
-      <td><%= link_to "Edit", edit_video_path(video) %></td>
-      <td><%= link_to "Destroy", video, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<h2>Most Popular</h2>
 
-<p><%= link_to "New Video", new_video_path %></p>
+<p>Eventually users will be able to sort videos here (hot, top, worst), and play them in playlists, for now it just lists all the videos that have been submitted. It will also be nice and ajaxy (so that the video pops up underneath the title without reloading the page, the user will only go to the view page if they want to leave a comment.)</p>
+
+<ul>
+	<% @videos.each do |video| %>
+		<li>
+			<h3><%= link_to "#{video.title}", video %></h3>
+		</li>
+	<% end %>
+</ul>
