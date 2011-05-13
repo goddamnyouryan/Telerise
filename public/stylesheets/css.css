@@ -1,0 +1,52 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: 0; }
+html,body { height:100%; }
+
+body {
+	background: #272725;
+	color: #959593;
+	font-family:Georgia,"Times New Roman",Serif;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+a {
+	color:#F9F9F6;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	
+}
+
+h1 { }
+h2 { }
+h3 { }
+h4 { }
+h5 { }
+h6 { }
+
+header {
+	float:left;
+	margin-left:100px;
+}
+
+nav {
+	float:right;
+}
+
+div#container {
+	width:960px;
+	margin:50px 0 0 100px;
+}

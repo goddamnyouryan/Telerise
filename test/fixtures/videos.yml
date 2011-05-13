@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  url: MyString
+  title: MyString
+  description: MyText
+  provider: MyString
+  height: 1
+  width: 1
+  embed: MyText
+  thumb: MyString
+  thumb_height: 1
+  thumb_width: 1
+
+two:
+  url: MyString
+  title: MyString
+  description: MyText
+  provider: MyString
+  height: 1
+  width: 1
+  embed: MyText
+  thumb: MyString
+  thumb_height: 1
+  thumb_width: 1
