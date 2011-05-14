@@ -50,4 +50,59 @@ class VideosController < ApplicationController
     @video.destroy
     redirect_to videos_url, :notice => "Successfully destroyed video."
   end
+  
+  def vote_up
+    @video = Video.find params[:video_id]
+    @video.vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def vote_down
+    @video = Video.find params[:video_id]
+    @video.vote_down(current_user)
+    respond_to do |format|
+      format.js { }
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def remove_vote_up
+    @video = Video.find params[:video_id]
+    @video.remove_vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def remove_vote_down
+    @video = Video.find params[:video_id]
+    @video.remove_vote_down(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def reverse_vote_up
+    @video = Video.find params[:video_id]
+    @video.reverse_vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def reverse_vote_down
+    @video = Video.find params[:video_id]
+    @video.reverse_vote_down(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
 end

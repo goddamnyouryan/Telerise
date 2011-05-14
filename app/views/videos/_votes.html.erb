@@ -1,0 +1,23 @@
+<% if current_user.voted_for?(@video) %>
+
+	<%= link_to 'Vote Up', remove_vote_up_path(:video_id => @video.id), :style => 'color:orange;', :remote => true %>
+	<%= link_to 'Vote Down', reverse_vote_up_path(:video_id => @video.id), :remote => true  %>
+
+<% elsif current_user.voted_against?(@video) %>
+
+	<%= link_to 'Vote Up', reverse_vote_down_path(:video_id => @video.id), :remote => true  %>
+	<%= link_to 'Vote Down', remove_vote_down_path(:video_id => @video.id), :style => 'color:orange;', :remote => true   %>
+
+<% else %>
+
+	<%= link_to 'Vote Up', vote_up_path(:video_id => @video.id), :remote => true  %>
+	<%= link_to 'Vote Down', vote_down_path(:video_id => @video.id), :remote => true  %>
+	
+<% end %>
+
+<p>
+	Upvotes: <%= @video.votes_up %><br />
+	Downvotes: <%= @video.votes_down %><br />
+	Total Votes: <%= @video.votes_up + @video.votes_down %><br />
+	Vote Score: <%= @video.votes_up - @video.votes_down %>
+</p>

@@ -6,6 +6,10 @@
 
 <%= raw(@video.embed) %>
 
+<div id="video_votes" style="float:right;">
+	<%= render :partial => 'votes' %>
+</div>
+
 <p>
   <%= @video.description %>
 </p>
