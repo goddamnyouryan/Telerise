@@ -13,15 +13,15 @@ class User < ActiveRecord::Base
   
   def voted_for?(voteable)
     0 < Vote.count(:all, :conditions => 
-                        ["user_id = ? AND vote = ? AND video_id = ?",
-                        self.id, "up", voteable.id ]
+                        ["user_id = ? AND vote = ? AND votable_id = ? AND votable_type = ?",
+                        self.id, "up", voteable.id, voteable.class.name ]
                   )
   end
   
   def voted_against?(voteable)
     0 < Vote.count(:all, :conditions => 
-                        ["user_id = ? AND vote = ? AND video_id = ?",
-                        self.id, "down", voteable.id ]
+                        ["user_id = ? AND vote = ? AND votable_id = ? AND votable_type = ?",
+                        self.id, "down", voteable.id, voteable.class.name ]
                   )
   end
   

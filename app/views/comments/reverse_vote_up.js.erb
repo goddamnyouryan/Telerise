@@ -1,0 +1,1 @@
+$("#<%= @comment.id %>_votes").html("<%= escape_javascript(render :partial => 'comments/votes', :locals => { :comment => @comment} ) %>");

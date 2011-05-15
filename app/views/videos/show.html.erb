@@ -36,6 +36,7 @@
 		<li>
 			<h4><%= comment.message %></h4>
 			<h5><%= comment.user.login %></h5>
+			<p id="<%= comment.id %>_votes"><%= render :partial => "comments/votes", :locals => { :comment => comment } %></p>
 		</li>
 	<% end %>
 </ul>

@@ -1,0 +1,29 @@
+<% if current_user %>
+
+	<% if current_user.voted_for?(comment) %>
+	
+		<%= link_to '+', comment_remove_vote_up_path(:comment_id => comment.id), :style => 'color:orange;', :remote => true %>
+		<%= link_to '-', comment_reverse_vote_up_path(:comment_id => comment.id), :remote => true  %>
+	
+	<% elsif current_user.voted_against?(comment) %>
+	
+		<%= link_to '+', comment_reverse_vote_down_path(:comment_id => comment.id), :remote => true  %>
+		<%= link_to '-', comment_remove_vote_down_path(:comment_id => comment.id), :style => 'color:orange;', :remote => true   %>
+	
+	<% else %>
+	
+		<%= link_to '+', comment_vote_up_path(:comment_id => comment.id), :remote => true  %>
+		<%= link_to '-', comment_vote_down_path(:comment_id => comment.id), :remote => true  %>
+		
+	<% end %>
+
+<% else %>
+
+	<%= link_to '+', comment_new_session_path %>
+	<%= link_to '-', comment_new_session_path  %>
+
+<% end %>
+
+<span>
+<%= comment.votes_up %> <%= comment.votes_down %> <%= comment.votes_up + comment.votes_down %> <%= comment.votes_up - comment.votes_down %>
+</span>

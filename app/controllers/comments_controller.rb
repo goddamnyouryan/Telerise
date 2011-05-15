@@ -40,4 +40,65 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to comments_url, :notice => "Successfully destroyed comment."
   end
+  
+  def vote_up
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def vote_down
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.vote_down(current_user)
+    respond_to do |format|
+      format.js { }
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def remove_vote_up
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.remove_vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def remove_vote_down
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.remove_vote_down(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def reverse_vote_up
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.reverse_vote_up(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def reverse_vote_down
+    @comment = Comment.find params[:comment_id]
+    @video = @comment.video
+    @comment.reverse_vote_down(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
 end

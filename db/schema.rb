@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514034727) do
+ActiveRecord::Schema.define(:version => 20110515084459) do
 
   create_table "comments", :force => true do |t|
     t.text     "message"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20110514034727) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_up",   :default => 0, :null => false
+    t.integer  "votes_down", :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -51,9 +53,10 @@ ActiveRecord::Schema.define(:version => 20110514034727) do
   create_table "votes", :force => true do |t|
     t.string   "vote"
     t.integer  "user_id"
-    t.integer  "video_id"
+    t.integer  "votable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "votable_type"
   end
 
 end
