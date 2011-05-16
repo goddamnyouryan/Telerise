@@ -17,6 +17,9 @@ body {
   overflow: hidden;
 }
 
+.fl { float: left; }
+.fr { float: right; }
+
 a {
 	color:#F9F9F6;
 	text-decoration:none;
@@ -49,4 +52,41 @@ nav {
 div#container {
 	width:960px;
 	margin:50px 0 0 100px;
+}
+
+/************  HOME  ******************/
+
+ul#video li {
+	background-color:#3F3F3F;
+	float:left;
+	margin-bottom:15px;
+	padding:8px;
+	width:640px;
+}
+
+.video_votes {
+	float: left;
+}
+
+img.small_thumb {
+	margin: 0 10px;
+}
+
+.video_data {
+	float: left;
+	margin: 8px 0 0 5px;
+}
+
+.video_data p {
+	font-size: 12px;
+}
+
+/************  COMMENTS  ******************/
+.comment_votes {
+	float: left;
+}
+
+.comment_data {
+	float:left;
+	margin:10px 0 0 5px;
 }

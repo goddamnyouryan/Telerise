@@ -16,19 +16,24 @@ class VideosController < ApplicationController
     api = Embedly::API.new :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; ryan.macinnes@gmail.com)'
     obj = api.oembed :url => params[:video][:url]
     @embedly = obj[0]
-    @video = Video.new(params[:video])
-    @video.user_id = current_user.id
-    @video.provider = @embedly.provider_name
-    @video.height = @embedly.height
-    @video.width = @embedly.width
-    @video.embed = @embedly.html
-    @video.thumb = @embedly.thumbnail_url
-    @video.thumb_height = @embedly.thumbnail_height
-    @video.thumb_width = @embedly.thumbnail_width
-    if @video.save
-      redirect_to @video, :notice => "Successfully submitted video."
+    unless @embedly.url == nil 
+      @video = Video.new(params[:video])
+      @video.user_id = current_user.id
+      @video.provider = @embedly.provider_name
+      @video.height = @embedly.height
+      @video.width = @embedly.width
+      @video.embed = @embedly.html
+      @video.thumb = @embedly.thumbnail_url
+      @video.thumb_height = @embedly.thumbnail_height
+      @video.thumb_width = @embedly.thumbnail_width
+      if @video.save
+        @video.vote_up(current_user)
+        redirect_to @video, :notice => "Successfully submitted video."
+      else
+        render :action => 'new'
+      end
     else
-      render :action => 'new'
+      redirect_to new_video_path, :notice => "Sorry, you submitted an invalid video url."
     end
   end
 
@@ -99,6 +104,23 @@ class VideosController < ApplicationController
   def reverse_vote_down
     @video = Video.find params[:video_id]
     @video.reverse_vote_down(current_user)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def show_video_ajax
+    @video = Video.find params[:video_id]
+    @embed = @video.embed
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
+    end
+  end
+  
+  def hide_video_ajax
+    @video = Video.find params[:video_id]
     respond_to do |format|
       format.js
       format.html { redirect_to @video }

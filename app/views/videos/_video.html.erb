@@ -1,0 +1,14 @@
+<li id="<%= video.id %>_video">
+	<div id="<%= video.id %>_votes" class="video_votes"><%= render :partial => "votes", :locals => { :video => video } %></div>
+	<%= image_tag "#{video.thumb}", :height => "50px", :class => "fl small_thumb" %>
+	<div class="video_data">
+		<h3 id="<%= video.id %>_title"><%= link_to "#{video.title}", show_video_ajax_path(:video_id => video.id), :remote => true %></h3>
+		<p>
+			Submitted by: <%= link_to video.user.login, user_path(video.user) %> 
+			<%= distance_of_time_in_words_to_now(video.created_at) %> ago
+			<%= link_to "comment (#{video.comments.count})", video %>
+		</p>
+	</div>
+</li>
+
+<div class="clear"></div>

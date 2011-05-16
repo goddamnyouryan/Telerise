@@ -4,6 +4,8 @@ Telerise::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
+  match "/show_video_ajax" => "videos#show_video_ajax"
+  match "/hide_video_ajax" => "videos#hide_video_ajax"
   
   # voting routes
   match "/video_vote_up" => "videos#vote_up"

@@ -1,0 +1,2 @@
+$("#<%= @video.id %>_embed").remove();
+$("#<%= @video.id %>_title").html("<%= escape_javascript(link_to "#{@video.title}", show_video_ajax_path(:video_id => @video.id), :remote => true) %>");

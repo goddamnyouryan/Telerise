@@ -1,0 +1,9 @@
+<li>
+	<div id="<%= comment.id %>_votes" class="comment_votes"><%= render :partial => "comments/votes", :locals => { :comment => comment } %></div>
+	<div class="comment_data">
+		<h4><%= comment.message %></h4>
+		<h5><%= comment.user.login %> <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</h5>
+	</div>
+</li>
+
+<div class="clear"></div>

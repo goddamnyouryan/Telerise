@@ -1,0 +1,2 @@
+$("#comments").prepend("<%= escape_javascript(render :partial => 'videos/comment', :locals => { :comment => @comment} ) %>");
+$("#new_comment")[0].reset();

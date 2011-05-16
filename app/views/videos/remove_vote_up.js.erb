@@ -1,1 +1,1 @@
-$("#video_votes").html("<%= escape_javascript(render :partial => 'votes', :video => @video) %>");
+$("#<%= @video.id %>_votes").html("<%= escape_javascript(render :partial => 'votes', :locals => { :video => @video }) %>");

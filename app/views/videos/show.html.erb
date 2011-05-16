@@ -1,14 +1,14 @@
 <% title "Video" %>
 
+<div id="<%= @video.id %>_votes" style="position:absolute;margin-left:-25px;">
+	<%= render :partial => 'votes', :locals => { :video => @video } %>
+</div>
+
 <h2>
 <%= @video.title %>
 </h2>
 
 <%= raw(@video.embed) %>
-
-<div id="video_votes" style="float:right;">
-	<%= render :partial => 'votes' %>
-</div>
 
 <p>
   <%= @video.description %>
@@ -16,13 +16,13 @@
 
 <p>
 	Submitted by:
-	<%= @video.user.login %>
+	<%= link_to @video.user.login, user_path(@video.user) %> <%= distance_of_time_in_words_to_now(@video.created_at) %> ago
 </p>
 
-<h2>Comments</h2>
+<h2>Comments (<%= @video.comments.count %>)</h2>
 
 <% if current_user %>
-	<%= form_for @comment do |f| %>
+	<%= form_for @comment, :remote => true do |f| %>
 		<%= f.hidden_field :video_id, :value => @video.id %>
 	  <p>
 	    <%= f.text_area :message, :placeholder => "New Comment...", :style => "height:60px;" %>
@@ -31,12 +31,6 @@
 	<% end %>
 <% end %>
 
-<ul>
-	<% @video.comments.each do |comment| %>
-		<li>
-			<h4><%= comment.message %></h4>
-			<h5><%= comment.user.login %></h5>
-			<p id="<%= comment.id %>_votes"><%= render :partial => "comments/votes", :locals => { :comment => comment } %></p>
-		</li>
-	<% end %>
+<ul id="comments">
+	<%= render :partial => 'comment', :collection => @video.comments.reverse %>
 </ul>

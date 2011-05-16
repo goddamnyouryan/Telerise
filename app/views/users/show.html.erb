@@ -1,28 +1,13 @@
-<% title "User" %>
+<% title "#{@user.login}" %>
 
+<h2><%= @user.login %></h2>
 <p>
-  <strong>Provider:</strong>
-  <%= @user.provider %>
-</p>
-<p>
-  <strong>Uid:</strong>
-  <%= @user.uid %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-<p>
-  <strong>Login:</strong>
-  <%= @user.login %>
-</p>
-<p>
-  <strong>Points:</strong>
-  <%= @user.points %>
+  <strong>Video Karma:</strong>
+  <%= @user.video_karma %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
+  <strong>Comment Karma:</strong>
+  <%= @user.comment_karma %>
 </p>
+

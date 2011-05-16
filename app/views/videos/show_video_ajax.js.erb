@@ -1,0 +1,2 @@
+$("#<%= @video.id %>_video").append("<div id='<%= @video.id %>_embed'><%= escape_javascript(raw(@embed)) %></div>");
+$("#<%= @video.id %>_title").html("<%= escape_javascript(link_to "#{@video.title}", hide_video_ajax_path(:video_id => @video.id), :remote => true) %>");

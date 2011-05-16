@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515084459) do
+ActiveRecord::Schema.define(:version => 20110515215817) do
 
   create_table "comments", :force => true do |t|
     t.text     "message"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(:version => 20110515084459) do
     t.string   "uid"
     t.string   "name"
     t.string   "login"
-    t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "video_karma",   :default => 0, :null => false
+    t.integer  "comment_karma", :default => 0, :null => false
   end
 
   create_table "videos", :force => true do |t|

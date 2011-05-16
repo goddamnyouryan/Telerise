@@ -16,9 +16,13 @@ class CommentsController < ApplicationController
     @video = Video.find params[:comment][:video_id]
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to @video, :notice => "Successfully submitted comment."
+      @comment.vote_up(current_user)
+      respond_to do |format|
+        format.js
+        format.html { redirect_to @video }
+      end
     else
-      render :action => 'new'
+      redirect_to root_path, :notice => "Something went wrong!"
     end
   end
 
