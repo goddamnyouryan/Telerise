@@ -11,3 +11,9 @@
   <%= @user.comment_karma %>
 </p>
 
+<h2>Videos Submitted by <%= @user.login %> (<%= @videos.count %>)</h2>
+
+<ul id="video">
+		<%= render @videos %>
+</ul>
+
