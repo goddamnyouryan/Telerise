@@ -7,6 +7,7 @@
 			Submitted by: <%= link_to video.user.login, user_path(video.user) %> 
 			<%= distance_of_time_in_words_to_now(video.created_at) %> ago
 			<%= link_to "#{pluralize(video.comments.count, "comment")}", video %>
+			Algorithm Score: <%= video.hot %>
 		</p>
 	</div>
 </li>
