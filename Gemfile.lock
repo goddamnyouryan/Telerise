@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/abscondment/statistics2.git
+  revision: 6af6cca46784eb7d5d639a5aadf6f1fa35bc018c
+  specs:
+    statistics2 (0.54)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -138,3 +144,4 @@ DEPENDENCIES
   omniauth
   pg
   rails (= 3.0.5)
+  statistics2!

@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     api = Embedly::API.new :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; ryan.macinnes@gmail.com)'
     obj = api.oembed :url => params[:video][:url]
     @embedly = obj[0]
-    unless @embedly.url == nil 
+    unless @embedly.provider_name == nil 
       @video = Video.new(params[:video])
       @video.user_id = current_user.id
       @video.provider = @embedly.provider_name

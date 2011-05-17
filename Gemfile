@@ -11,6 +11,7 @@ gem 'json'
 gem 'omniauth'
 gem "oa-openid"
 gem "nifty-generators", :group => :development
+gem "statistics2", :git => 'git://github.com/abscondment/statistics2.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
