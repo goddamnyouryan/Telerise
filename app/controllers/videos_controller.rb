@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.all
+    @videos = Video.all.sort_by(&:hot).reverse
   end
 
   def show

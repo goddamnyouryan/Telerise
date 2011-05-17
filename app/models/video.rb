@@ -12,19 +12,18 @@ class Video < ActiveRecord::Base
   end
   
   def hot
-      s = self.votes_up - self.votes_down
-      order = Math.log10(([s.abs, 1].max))
-      if s > 0 
-        sign = 1
-      elsif s < 0
-        sign = -1
-      else
-        sign = 0
-      end
-      seconds = epoch(self.created_at) - 1134028003
-      return (((order + sign) * seconds) /45000).round
+    s = self.votes_up - self.votes_down
+    order = Math.log10(([s.abs, 1].max))
+    if s > 0 
+      sign = 1
+    elsif s < 0
+      sign = -1
+    else
+      sign = 0
     end
-      
+    seconds = epoch(self.created_at) - 1134028003
+    return (((order + sign) * seconds) /45000).round
+  end
   
   require 'statistics2'
   def ranking(pos, n, power)
