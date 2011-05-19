@@ -6,7 +6,7 @@ fieldset, img { border: 0; }
 html,body { height:100%; }
 
 body {
-	background: #272725;
+	background: url(../images/bg.gif) #272725;
 	color: #959593;
 	font-family:Georgia,"Times New Roman",Serif;
 }
