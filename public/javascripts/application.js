@@ -14,7 +14,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$('h2#login').click(function () {
+	$('.login').click(function () {
 		if ($("div#login").is(":hidden")) {
 			$("div#login").slideDown("fast");
 		} else {

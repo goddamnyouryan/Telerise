@@ -25,7 +25,7 @@
 			<% if current_user %>
 				<h2 id="new-video"><%= link_to "submit new video", new_video_path %></h2>
 			<% else %>
-				<h2><%= link_to "submit new video", new_video_path %></h2>
+				<h2 class="login"><%= link_to "submit new video", new_video_path %></h2>
 			<% end %>
 			<%= render :partial => 'layouts/nav' %>
 			<h1><%= link_to "Telerise", root_path %></h1>

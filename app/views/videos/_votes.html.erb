@@ -22,8 +22,8 @@
 
 <% else %>
 
-	<div id="vote_up"><%= link_to '+', new_session_path %></div>
+	<div id="vote_up" class="login"><%= link_to '+', new_session_path %></div>
 	<h5><%= video.votes_up - video.votes_down %></h5>
-	<div id="vote_down"><%= link_to '-', new_session_path  %></div>
+	<div id="vote_down" class="login"><%= link_to '-', new_session_path  %></div>
 
 <% end %>
