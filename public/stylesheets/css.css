@@ -6,9 +6,10 @@ fieldset, img { border: 0; }
 html,body { height:100%; }
 
 body {
-	background: url(../images/bg.gif) #272725;
+	background: #2E2E2E;
 	color: #959593;
-	font-family:Georgia,"Times New Roman",Serif;
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 11px;
 }
 
 .clear {
@@ -27,6 +28,7 @@ a {
 
 a:hover {
 	text-decoration: underline;
+	color: #eec0e2;
 }
 
 a:visited {
@@ -37,29 +39,74 @@ h1 { }
 h2 { }
 h3 { }
 h4 { }
-h5 { }
+h5 { font-size:16px; }
 h6 { }
 
-header {
-	float:left;
-	margin-left:100px;
+div#flash_notice {
+	padding: 15px 0;
+	text-align:center;
+	background: #d5ebeb;
 }
 
-nav {
-	float:right;
+div#flash_error {
+	padding: 15px 0;
+	text-align:center;
+	background: #eec0e2;
 }
 
 div#container {
 	width:960px;
-	margin:50px 0 0 100px;
+	margin:5px auto 0;
 }
 
+header { }
+nav { float:right; }
+header nav { text-align: right;}
+header nav ul { display: none; }
+
+header h1 {
+	background: url(../images/logo.png) no-repeat;
+	height:70px;
+	width: 395px;
+	text-indent: -99999px;
+	margin: 50px auto 25px;
+}
+
+header h1:hover { background-position: 0 -70px; }
+header h1 a { display: block; height: 70px;}
+
+header h2 { font-size: 11px; display: inline; font-weight:normal; }
+
+div#new-video, div#login { 
+	background:#3F3F3F;
+	padding: 10px 0;
+	display:none;
+}
+
+div#new-video form, div#login ul { width: 960px; margin: 0 auto; }
+
+
+
 /************  HOME  ******************/
+
+nav.video {
+	float:left;
+}
+
+nav.video ul {
+margin: 25px 0;
+}
+
+nav.video ul li {
+	display: inline;
+	margin: 0 25px 0 0;
+}
+
 
 ul#video li {
 	background-color:#3F3F3F;
 	float:left;
-	margin-bottom:15px;
+	margin-bottom:20px;
 	padding:8px;
 	width:640px;
 }

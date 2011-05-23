@@ -16,10 +16,8 @@
 
 <p>
 	Submitted by:
-	<%= link_to @video.user.login, user_path(@video.user) %> <%= distance_of_time_in_words_to_now(@video.created_at) %> ago
+	<%= link_to @video.user.login, user_path(@video.user) %> <%= time_ago_in_words(@video.created_at) %> ago
 </p>
-
-<p>Algorithm Ranking: <%= @video.ranking(@video.votes_up, @video.total_votes, 0.1) %></p>
 
 <h2>Comments (<%= @video.comments.count %>)</h2>
 
@@ -34,5 +32,5 @@
 <% end %>
 
 <ul id="comments">
-	<%= render :partial => 'comment', :collection => @video.comments.reverse %>
+	<%= render :partial => 'comment', :collection => @video.comments.sort_by(&:ranking).reverse %>
 </ul>

@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @video }
       end
     else
-      redirect_to root_path, :notice => "Something went wrong!"
+      redirect_to @video, :notice => "Something went wrong!"
     end
   end
 

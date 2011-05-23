@@ -5,29 +5,31 @@
   <%= stylesheet_link_tag "css" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" %>
 	<%= javascript_include_tag "rails.js" %>
+	<%= javascript_include_tag "application.js" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<header>
-		<h1><%= link_to "Telerise", root_path %></h1>
-	</header>
-	<nav>
-		<% if current_user %>
-	  	Welcome <%= current_user.name %>! 
-			<%= link_to "My Profile", user_path(current_user) %> | 
-	  	<%= link_to "Sign Out", signout_path %> |
-			<%= link_to "Submit New Video", new_video_path %>
-		<% else %>
-	  	<%= link_to "Sign In", new_session_path %>
-		<% end %>
-	</nav>
 	
-	<div class="clear"></div>
+	<% flash.each do |name, msg| %>
+    <%= content_tag :div, raw(msg), :id => "flash_#{name}", :class => "flash" %>
+  <% end %>
+
+	<% if current_user %>
+		<%= render :partial => 'layouts/new_video'%>
+	<% else %>
+		<%= render :partial => 'layouts/login'%>
+	<% end %>
 	
 	<div id="container">
-		<% flash.each do |name, msg| %>
-      <%= content_tag :div, raw(msg), :id => "flash_#{name}" %>
-    <% end %>
+		<header>
+			<% if current_user %>
+				<h2 id="new-video"><%= link_to "submit new video", new_video_path %></h2>
+			<% else %>
+				<h2><%= link_to "submit new video", new_video_path %></h2>
+			<% end %>
+			<%= render :partial => 'layouts/nav' %>
+			<h1><%= link_to "Telerise", root_path %></h1>
+		</header>
 		<%= yield %>
 	</div>
 

@@ -1,0 +1,15 @@
+<div id="new-video">
+	<%= form_for Video.new do |f| %>
+	  <p>
+	    <%= f.text_field :url, :placeholder => "Paste Video URL here." %>
+	  </p>
+	  <p>
+	    <%= f.text_field :title, :placeholder => "Video Title" %>
+	  </p>
+	  <p>
+	    <%= f.text_area :description, :placeholder => "Video Description", :style => "height:60px;" %>
+	  </p>
+	  <p><%= f.submit %></p>
+	<% end %>
+	
+</div>

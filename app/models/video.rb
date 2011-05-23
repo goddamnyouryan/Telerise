@@ -3,6 +3,10 @@ class Video < ActiveRecord::Base
   has_many :comments
   has_many :votes, :as => :votable
   
+  def to_param
+    "#{id}-#{title.slice(0..40).gsub(/\W/, '-').downcase.gsub(/-{2,}/,'-')}"
+  end
+  
   def total_votes
     self.votes_up + self.votes_down
   end
@@ -25,15 +29,14 @@ class Video < ActiveRecord::Base
     return (((order + sign) * seconds) /45000).round
   end
   
-  require 'statistics2'
-  def ranking(pos, n, power)
-      if n == 0
-          return 0
-      end
-      z = Statistics2.pnormaldist(1-power/2)
-      phat = 1.0*pos/n
-      (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+  def controversial
+    return (self.votes_up + self.votes_down).to_f / [(self.votes_up - self.votes_down).abs, 1].max
   end
+  
+  def best
+    return self.votes_up - self.votes_down
+  end
+  
   
   def vote_up(user)
     @vote = Vote.create(:vote => "up", :user_id => user.id, :votable_id => self.id, :votable_type => "Video")

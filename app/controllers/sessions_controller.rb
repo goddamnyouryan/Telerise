@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
     if user.login.nil?
-      redirect_to new_user_path
+      redirect_to new_user_path, :notice => "Please choose a username to complete your registration."
     else
-      redirect_to root_url, :notice => "Signed in!"
+      redirect_to root_url, :notice => "Signed in as #{user.login}."
     end
   end
 

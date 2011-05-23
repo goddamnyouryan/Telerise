@@ -9,7 +9,12 @@ class VideosController < ApplicationController
   end
 
   def new
-    @video = Video.new
+    if current_user
+      @video = Video.new
+    else
+      flash[:error] = "You must be signed in to submit a new video."
+      redirect_to root_path
+    end
   end
 
   def create
@@ -54,6 +59,18 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @video.destroy
     redirect_to videos_url, :notice => "Successfully destroyed video."
+  end
+  
+  def best
+    @videos = Video.all.sort_by(&:best).reverse
+  end
+  
+  def new_submissions
+    @videos = Video.all.sort_by(&:created_at).reverse
+  end
+  
+  def controversial
+    @videos = Video.all.sort_by(&:controversial).reverse
   end
   
   def vote_up

@@ -7,6 +7,11 @@ Telerise::Application.routes.draw do
   match "/show_video_ajax" => "videos#show_video_ajax"
   match "/hide_video_ajax" => "videos#hide_video_ajax"
   
+  # sorting video routes
+  match "/all-time-best" => "videos#best", :as => :best
+  match "/new" => "videos#new_submissions", :as => :new_submissions
+  match "/controversial" => "videos#controversial"
+  
   # voting routes
   match "/video_vote_up" => "videos#vote_up"
   match "/video_vote_down" => "videos#vote_down"

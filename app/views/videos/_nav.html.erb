@@ -1,0 +1,10 @@
+<nav class="video">
+	<ul>
+		<li><%= link_to_unless_current "Currently Popular", root_path %></li>
+		<li><%= link_to_unless_current "All Time Best", best_path %></li>
+		<li><%= link_to_unless_current "New", new_submissions_path %></li>
+		<li><%= link_to_unless_current "Controversial", controversial_path %></li>
+	<ul>
+</nav>
+
+<div class="clear"></div>
