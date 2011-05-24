@@ -4,8 +4,12 @@ Telerise::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
+  
+  # various ajax routes
   match "/show_video_ajax" => "videos#show_video_ajax"
   match "/hide_video_ajax" => "videos#hide_video_ajax"
+  match "/users/check_login" => "users#check_login"
+  match "/videos/check_url" => "videos#check_url"
   
   # sorting video routes
   match "/all-time-best" => "videos#best", :as => :best

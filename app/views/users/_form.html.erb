@@ -1,10 +1,8 @@
-<h2>Please Enter A Username</h2>
-
 <%= form_for @user do |f| %>
 
   <p>
-    <%= f.text_field :login %>
+    <%= f.text_field :login, :placeholder => "Choose A Username" %>
   </p>
 
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Create Account" %></p>
 <% end %>

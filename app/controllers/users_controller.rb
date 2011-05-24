@@ -39,4 +39,12 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url, :notice => "Successfully destroyed user."
   end
+  
+  def check_login
+    @user = User.find_by_login(params[:user][:login])
+    respond_to do |format|
+      format.json { render :json => !@user }
+    end
+  end
+
 end

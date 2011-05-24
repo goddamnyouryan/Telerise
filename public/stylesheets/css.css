@@ -56,10 +56,10 @@ div#flash_error {
 
 div#container {
 	width:960px;
-	margin:5px auto 0;
+	margin:0 auto;
 }
 
-header { }
+header { padding-top:5px; }
 nav { float:right; }
 header nav { text-align: right;}
 header nav ul { display: none; }

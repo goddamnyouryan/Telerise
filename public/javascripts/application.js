@@ -27,4 +27,40 @@ $(document).ready(function() {
 	if ($(".flash").length > 0) {
 	  	$('.flash').delay(2000).slideUp('fast');
 		}
+		
+	jQuery.validator.addMethod("noSpace", function(value, element) { 
+	  return value.indexOf(" ") < 0 && value != ""; 
+	}, "No space please and don't leave it empty");
+	
+		
+  $("form.edit_user").validate({
+		rules: {
+			"user[login]": {required: true, remote:"/users/check_login", maxlength: 15, noSpace: true }
+		},
+		messages: {
+      "user[login]": {
+        required: "You must create a username.",
+        remote: "This username has already been chosen.",
+				maxlength: "Your username can't be more than 15 characters.",
+				noSpace: "No spaces in usernames please."
+      }
+		}
+	});
+	
+	$("#new_video").validate({
+		rules: {
+			"video[url]": {required: true, remote:"/videos/check_url" },
+			"video[title]": { required: true }
+		},
+		messages: {
+      "video[url]": {
+        required: "You must paste a video url here.",
+        remote: "This is not a valid video link."
+      },
+			"video[title]": {
+				required: "You must write a title for this video."
+			}
+		}
+	});
+	
 });

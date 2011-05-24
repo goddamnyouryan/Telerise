@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+  before_filter :current_user_login, :only => :create
+  
   def index
     @videos = Video.all.sort_by(&:hot).reverse
   end
@@ -38,7 +40,7 @@ class VideosController < ApplicationController
         render :action => 'new'
       end
     else
-      redirect_to new_video_path, :notice => "Sorry, you submitted an invalid video url."
+      redirect_to root_path, :notice => "Sorry, you submitted an invalid video url."
     end
   end
 
@@ -141,6 +143,15 @@ class VideosController < ApplicationController
     respond_to do |format|
       format.js
       format.html { redirect_to @video }
+    end
+  end
+  
+  def check_url
+    api = Embedly::API.new :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; ryan.macinnes@gmail.com)'
+    obj = api.oembed :url => params[:video][:url]
+    @embedly = obj[0]
+    respond_to do |format|
+      format.json { render :json => @embedly.type == "video" }
     end
   end
   

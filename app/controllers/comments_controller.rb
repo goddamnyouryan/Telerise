@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :current_user_login, :only => :create
+  
   def index
     @comments = Comment.all
   end
