@@ -8,6 +8,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   #provider :instagram, 'CONSUMER_KEY', 'CONSUMER_SECRET'
   provider :netflix, 'maf8sy6duu3sf7dhyveubadr', 'sZbcycdky8'
   #provider :tumblr, 'CONSUMER_KEY', 'CONSUMER_SECRET'
-  #provider :youtube, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+  provider :you_tube, 'AI39si4H0_muMMbRCwHLDIy9G-nL7ieqOO3IcjX1EOYC-BkPtGkdUWaBc6Z554SSNjKDfYO4hyO19BqxGAEJAgm3bQlBb19ovg'
   provider :vimeo, '2647fbb18234ed959cecd96525be1bfb', '29df10b13fd88267'
 end
