@@ -1,0 +1,5 @@
+if ($("#share_<%= params[:video_id] %>").is(":hidden")) {
+	$("#share_<%= params[:video_id] %>").slideDown("fast");
+} else {
+	$("#share_<%= params[:video_id] %>").slideUp("fast");
+}

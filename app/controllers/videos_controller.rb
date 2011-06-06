@@ -3,11 +3,13 @@ class VideosController < ApplicationController
   
   def index
     @videos = Video.all.sort_by(&:hot).reverse
+    @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
 
   def show
     @video = Video.find(params[:id])
     @comment = Comment.new
+    @comments = @video.comments.sort_by(&:ranking).reverse
   end
 
   def new
@@ -65,14 +67,17 @@ class VideosController < ApplicationController
   
   def best
     @videos = Video.all.sort_by(&:best).reverse
+    @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
   
   def new_submissions
     @videos = Video.all.sort_by(&:created_at).reverse
+    @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
   
   def controversial
     @videos = Video.all.sort_by(&:controversial).reverse
+    @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
   
   def vote_up
@@ -152,6 +157,13 @@ class VideosController < ApplicationController
     @embedly = obj[0]
     respond_to do |format|
       format.json { render :json => @embedly.type == "video" }
+    end
+  end
+  
+  def share_toggle
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @video }
     end
   end
   

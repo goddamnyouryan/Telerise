@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to root_path, :notice  => "Successfully created account"
+      redirect_to session[:return_to] || root_path, :notice  => "Successfully created account"
     else
       render :action => 'edit'
     end

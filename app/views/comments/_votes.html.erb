@@ -2,7 +2,7 @@
 
 	<% if current_user.voted_for?(comment) %>
 	
-		<div id="vote_up"><%= link_to '+', comment_remove_vote_up_path(:comment_id => comment.id), :style => 'color:orange;', :remote => true %></div>
+		<div id="vote_up"><%= link_to '+', comment_remove_vote_up_path(:comment_id => comment.id), :class => 'voted', :remote => true %></div>
 		<h5><%= comment.votes_up - comment.votes_down %></h5>
 		<div id="vote_down"><%= link_to '-', comment_reverse_vote_up_path(:comment_id => comment.id), :remote => true  %></div>
 	
@@ -10,7 +10,7 @@
 	
 		<div id="vote_up"><%= link_to '+', comment_reverse_vote_down_path(:comment_id => comment.id), :remote => true  %></div>
 		<h5><%= comment.votes_up - comment.votes_down %></h5>
-		<div id="vote_down"><%= link_to '-', comment_remove_vote_down_path(:comment_id => comment.id), :style => 'color:orange;', :remote => true   %></div>
+		<div id="vote_down"><%= link_to '-', comment_remove_vote_down_path(:comment_id => comment.id), :class => 'voted', :remote => true   %></div>
 	
 	<% else %>
 	

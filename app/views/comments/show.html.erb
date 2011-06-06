@@ -1,20 +1,13 @@
-<% title "Comment" %>
-
-<p>
-  <strong>Message:</strong>
-  <%= @comment.message %>
-</p>
-<p>
-  <strong>Video:</strong>
-  <%= @comment.video_id %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_comment_path(@comment) %> |
-  <%= link_to "Destroy", @comment, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", comments_path %>
-</p>
+<% title "#{@comment.user.login} comment for #{@comment.video.title}" %>
+<ul id="comments">
+<li>
+<div id="<%= @comment.id %>_votes" class="comment_votes video_votes"><%= render :partial => "comments/votes", :locals => { :comment => @comment } %></div>
+<div class="comment_data">
+	<h4><%= @comment.message %></h4>
+	<h5>
+		<%= link_to @comment.user.login, user_path(@comment.user) %> 
+		<%= time_ago_in_words(@comment.created_at) %> ago <br />
+		<%= link_to "video", video_path(@comment.video) %>
+	</h5>
+</div>
+</li>

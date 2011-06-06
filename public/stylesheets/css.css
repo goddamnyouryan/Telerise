@@ -35,8 +35,8 @@ a:visited {
 }
 
 h1 { }
-h2 { }
-h3 { }
+h2 { color:#D5EBEB; font-size: 18px; }
+h3 { font-size:24px; }
 h4 { }
 h5 { font-size:16px; }
 h6 { }
@@ -85,12 +85,14 @@ div#new-video, div#login {
 
 div#new-video form, div#login ul { width: 960px; margin: 0 auto 15px; }
 
-div#login ul h3 { margin-bottom:25px; }
+div#login ul h2 { margin-bottom:25px; }
 
 div#login ul li {
 	display: inline;
 	margin-right: 40px;
 }
+
+div#login ul li#vimeo { margin-right: 0; }
 div#login ul li a {
 	padding:15px 0 9px 30px;
 }
@@ -98,7 +100,10 @@ div#login ul li a:hover { background-position: 0 -25px !important;}
 
 div#login ul li#facebook a { background: url(../images/facebook.png) no-repeat 0 5px;}
 div#login ul li#gmail a { background: url(../images/gmail.png) no-repeat 0 5px;}
+div#login ul li#youtube a { background: url(../images/youtube.png) no-repeat 0 5px;}
 div#login ul li#twitter a { background: url(../images/twitter.png) no-repeat 0 5px;}
+div#login ul li#yahoo a { background: url(../images/yahoo.png) no-repeat 0 5px;}
+div#login ul li#linkedin a { background: url(../images/linkedin.png) no-repeat 0 5px;}
 div#login ul li#foursquare a { background: url(../images/foursquare.png) no-repeat 0 5px;}
 div#login ul li#netflix a { background: url(../images/netflix.png) no-repeat 0 5px;}
 div#login ul li#vimeo a { background: url(../images/vimeo.png) no-repeat 0 5px;}
@@ -119,7 +124,7 @@ nav.video ul li {
 }
 
 
-ul#video li {
+ul#video li, ul#comments li {
 	background-color:#3F3F3F;
 	float:left;
 	margin-bottom:20px;
@@ -129,20 +134,104 @@ ul#video li {
 
 .video_votes {
 	float: left;
+	width: 50px;
+	margin-left: 10px;
 }
 
 img.small_thumb {
 	margin: 0 10px;
+	max-width: 100px;
 }
 
 .video_data {
 	float: left;
 	margin: 8px 0 0 5px;
+	max-width: 450px;
 }
 
 .video_data p {
-	font-size: 12px;
+	font-size: 11px;
+	margin-top: 5px;
 }
+
+div#vote_up a {
+	background: url(../images/upvote.png) no-repeat;
+	display:block;
+	text-indent:-9999px;
+	width:30px;
+	height:24px;
+}
+
+div#vote_down a {
+	background: url(../images/downvote.png) no-repeat;
+	display:block;
+	text-indent:-9999px;
+	width:30px;
+	height:24px;
+}
+
+div#vote_down { margin-left: -1px;}
+
+div#vote_up a:hover, div#vote_down a:hover { background-position: 0 -23px; }
+
+.video_votes h5 { margin:5px 0 -1px -20px; text-align:center; font-size: 24px;}
+
+.voted { background-position: 0 -46px !important; }
+
+.embed { margin-top: 15px; float:left;}
+
+.embed_bottom_nav { margin:15px 0 5px; text-align:right; }
+
+.button {
+	background: url(../images/submit.png) no-repeat;
+	height: 30px;
+	width: 75px;
+	text-indent:-9999px;
+	border: none;
+}
+
+.button:hover {
+	background-position: 0 -31px;
+	cursor: pointer;
+}
+
+input[type="text"], input[type="password"], textarea {
+	border:1px solid #CCCCCC;
+	border-radius:4px 4px 4px 4px;
+	line-height:1.5em;
+	outline:medium none;
+	padding:4px;
+}
+
+input[type="text"]:focus,input[type="password"]:focus,textarea:focus {
+	border-color:#a2a1a1;
+	color:#000;
+	-moz-box-shadow:0 0 6px #83c8f0;
+	-webkit-box-shadow:0 0 6px #83c8f0;
+}
+
+form p {
+	margin: 15px 0;
+}
+
+label.error { margin-left: 5px;}
+
+textarea {
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-size: 11px;
+}
+
+
+.edit_user { text-align: center; }
+
+h2.video {
+	font-size: 24px;
+	width: 640px;
+	margin-bottom: 15px;
+}
+
+nav.pagination { float: left; }
+
 
 /************  COMMENTS  ******************/
 .comment_votes {
@@ -152,4 +241,13 @@ img.small_thumb {
 .comment_data {
 	float:left;
 	margin:10px 0 0 5px;
+}
+
+ul#comments { }
+
+ul#comments .comment_data h5 { font-size: 11px; font-weight:normal;}
+ul#comments .comment_data h4 { font-size: 18px; font-weight:normal;}
+
+h2#comments_count {
+	margin-top: 25px;
 }

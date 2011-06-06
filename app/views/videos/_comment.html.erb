@@ -1,8 +1,13 @@
 <li>
-	<div id="<%= comment.id %>_votes" class="comment_votes"><%= render :partial => "comments/votes", :locals => { :comment => comment } %></div>
+	<div id="<%= comment.id %>_votes" class="comment_votes video_votes"><%= render :partial => "comments/votes", :locals => { :comment => comment } %></div>
 	<div class="comment_data">
 		<h4><%= comment.message %></h4>
-		<h5><%= link_to comment.user.login, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago</h5>
+		<h5>
+			<%= link_to comment.user.login, user_path(comment.user) %> 
+			<%= time_ago_in_words(comment.created_at) %> ago <br />
+			<%= link_to 'reply', comment %> | 
+			<%= link_to 'permalink', comment %>
+		</h5>
 	</div>
 </li>
 

@@ -2,7 +2,7 @@
 
 	<% if current_user.voted_for?(video) %>
 	
-		<div id="vote_up"><%= link_to '+', video_remove_vote_up_path(:video_id => video.id), :style => 'color:orange;', :remote => true %></div>
+		<div id="vote_up"><%= link_to '+', video_remove_vote_up_path(:video_id => video.id), :class => 'voted', :remote => true %></div>
 		<h5><%= video.votes_up - video.votes_down %></h5>
 		<div id="vote_down"><%= link_to '-', video_reverse_vote_up_path(:video_id => video.id), :remote => true  %></div>
 	
@@ -10,7 +10,7 @@
 	
 		<div id="vote_up"><%= link_to '+', video_reverse_vote_down_path(:video_id => video.id), :remote => true  %></div>
 		<h5><%= video.votes_up - video.votes_down %></h5>
-		<div id="vote_down"><%= link_to '-', video_remove_vote_down_path(:video_id => video.id), :style => 'color:orange;', :remote => true   %></div>
+		<div id="vote_down"><%= link_to '-', video_remove_vote_down_path(:video_id => video.id), :class => 'voted', :remote => true   %></div>
 	
 	<% else %>
 	

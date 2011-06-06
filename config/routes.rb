@@ -10,6 +10,7 @@ Telerise::Application.routes.draw do
   match "/hide_video_ajax" => "videos#hide_video_ajax"
   match "/users/check_login" => "users#check_login"
   match "/videos/check_url" => "videos#check_url"
+  match "/share_toggle" => "videos#share_toggle"
   
   # sorting video routes
   match "/all-time-best" => "videos#best", :as => :best

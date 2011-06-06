@@ -1,15 +1,19 @@
 <div id="new-video">
 	<%= form_for Video.new do |f| %>
+		<h2>Add a New Video</h2>
 	  <p>
+			<%= f.label "Video Link" %><br />
 	    <%= f.text_field :url, :placeholder => "Paste Video URL here." %>
 	  </p>
 	  <p>
+			<%= f.label "Title" %><br />
 	    <%= f.text_field :title, :placeholder => "Video Title" %>
 	  </p>
 	  <p>
-	    <%= f.text_area :description, :placeholder => "Video Description", :style => "height:60px;" %>
+			<%= f.label "Description" %><br />
+	    <%= f.text_area :description, :placeholder => "Video Description", :style => "height:60px; width:217px;" %>
 	  </p>
-	  <p><%= f.submit %></p>
+	  <p><%= f.submit "New Video", :class => 'button' %></p>
 	<% end %>
 	
 </div>

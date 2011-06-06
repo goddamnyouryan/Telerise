@@ -1,8 +1,10 @@
 <%= form_for @user do |f| %>
 
+<h2>You must choose a Username for this account to complete registration.</h2>
+
   <p>
-    <%= f.text_field :login, :placeholder => "Choose A Username" %>
+    <%= f.text_field :login, :placeholder => "Choose a Username" %>
   </p>
 
-  <p><%= f.submit "Create Account" %></p>
+  <p><%= f.submit "Create Account", :class => 'button' %></p>
 <% end %>

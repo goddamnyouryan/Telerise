@@ -1,11 +1,11 @@
 <% title "Video" %>
 
-<div id="<%= @video.id %>_votes" style="position:absolute;margin-left:-25px;">
+<div id="<%= @video.id %>_votes" style="position:absolute;margin-left:-50px;" class="video_votes">
 	<%= render :partial => 'votes', :locals => { :video => @video } %>
 </div>
 
-<h2>
-<%= @video.title %>
+<h2 class="video">
+	<%= @video.title %>
 </h2>
 
 <%= raw(@video.embed) %>
@@ -19,18 +19,29 @@
 	<%= link_to @video.user.login, user_path(@video.user) %> <%= time_ago_in_words(@video.created_at) %> ago
 </p>
 
-<h2>Comments (<%= @video.comments.count %>)</h2>
+<h2 id="comments_count">Comments (<%= @video.comments.count %>)</h2>
 
 <% if current_user %>
 	<%= form_for @comment, :remote => true do |f| %>
 		<%= f.hidden_field :video_id, :value => @video.id %>
 	  <p>
+			<%= f.label "Respond to this video" %><br />
 	    <%= f.text_area :message, :placeholder => "New Comment...", :style => "height:60px;" %>
 	  </p>
-	  <p><%= f.submit %></p>
+	  <p><%= f.submit "New Comment", :class => 'button' %></p>
+	<% end %>
+<% else %>
+	<%= form_for @comment, :remote => true do |f| %>
+		<%= f.hidden_field :video_id, :value => @video.id %>
+	  <p>
+			<%= f.label "Respond to this video" %><br />
+	    <%= f.text_area :message, :placeholder => "New Comment...", :style => "height:60px;", :class => 'login' %>
+	  </p>
+	  <p><%= f.submit "New Comment", :class => 'button login' %></p>
 	<% end %>
 <% end %>
 
+
 <ul id="comments">
-	<%= render :partial => 'comment', :collection => @video.comments.sort_by(&:ranking).reverse %>
+	<%= render :partial => 'comment', :collection => @comments %>
 </ul>
