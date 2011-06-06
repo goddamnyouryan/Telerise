@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :check_uri
-  before_filter :current_user_login
   helper_method :current_user
   
   def check_uri
