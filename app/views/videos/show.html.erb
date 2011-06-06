@@ -16,6 +16,9 @@
   <%= @video.description %><br />
 	Submitted by:
 	<%= link_to @video.user.login, user_path(@video.user) %> <%= time_ago_in_words(@video.created_at) %> ago
+	
+		<%= link_to "edit" edit_video_path(@video) %>
+	
 </p>
 
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
