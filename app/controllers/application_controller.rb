@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :check_uri
+  before_filter :current_user_login
   helper_method :current_user
   
   def check_uri
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user_login
-    unless current_user.login?
+    if current_user.login.nil?
       redirect_to new_user_path, :notice => "You must create a username first."
     end
   end
