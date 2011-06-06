@@ -48,6 +48,9 @@ class VideosController < ApplicationController
 
   def edit
     @video = Video.find(params[:id])
+    unless current_user == @video.user && Time.now < (@video.created_at + 1.hour )
+      redirect_to root_path, :notice => "Sorry you can only edit a video up to one hour after submitting it."
+    end
   end
 
   def update

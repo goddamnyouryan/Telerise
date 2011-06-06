@@ -1,8 +1,15 @@
 <% title "Edit Video" %>
 
-<%= render 'form' %>
+<%= raw(@video.embed) %>
 
-<p>
-  <%= link_to "Show", @video %> |
-  <%= link_to "View All", videos_path %>
-</p>
+<%= form_for @video do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :style => "height:60px; width:217px;" %>
+  </p>
+  <p><%= f.submit "Update Video", :class => "button" %></p>
+<% end %>
