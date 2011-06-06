@@ -1,11 +1,15 @@
 <nav id="user">
-	<% if current_user && current_user.login? %>
+	<% if current_user %>
+	<% if current_user.login? %>
   	<h2><%= link_to current_user.login, user_path(current_user) %></h2>
 		<ul>
 			<li><%= current_user.video_karma %> video karma</li>
 			<li><%= current_user.comment_karma %> comment karma</li>
   		<li><%= link_to "sign out", signout_path %></li>
 		</ul>
+	<% else %>
+		<h2><%= link_to "sign up / in", new_user_path %></h2>
+	<% end %>
 	<% else %>
   	<h2 class="login"><%= link_to "sign up / in", new_session_path %></h2>
 	<% end %>
