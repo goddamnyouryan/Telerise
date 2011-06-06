@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :videos
-  has_many :comments
-  has_many :votes
+  has_many :videos, :dependent => :destroy 
+  has_many :comments, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
   
   def self.create_with_omniauth(auth)
     create! do |user|
