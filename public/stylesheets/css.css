@@ -123,6 +123,7 @@ nav.video ul li {
 	margin: 0 25px 0 0;
 }
 
+ul#video { float: left; }
 
 ul#video li, ul#comments li {
 	background-color:#3F3F3F;
@@ -231,6 +232,8 @@ h2.video {
 }
 
 nav.pagination { float: left; }
+
+p#meta { margin: 15px 0; }
 
 
 /************  COMMENTS  ******************/

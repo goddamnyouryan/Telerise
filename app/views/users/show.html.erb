@@ -13,7 +13,13 @@
 
 <h2>Videos Submitted by <%= @user.login %> (<%= @videos.count %>)</h2>
 
+<div style="float:left;">
+
 <ul id="video">
 		<%= render @videos.reverse %>
 </ul>
+
+</div>
+
+<%= render :partial => "videos/ads" %>
 
