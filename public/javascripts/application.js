@@ -63,4 +63,15 @@ $(document).ready(function() {
 		}
 	});
 	
+	$("#new_comment").validate({
+		rules: {
+			"comment[message]": { required: true }
+		},
+		messages: {
+      "comment[message]": {
+        required: "You must write a comment!"
+      }
+		}
+	});
+	
 });
