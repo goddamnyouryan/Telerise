@@ -10,6 +10,10 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @comment = Comment.new
     @comments = @video.comments.sort_by(&:ranking).reverse
+    @videos = Video.all.sort_by(&:hot).reverse
+    @next = @videos[ @videos.index(@video) + 1]
+    @previous = @videos[ @videos.index(@video) - 1]
+    @random = Video.offset(rand(Video.count)).first
   end
 
   def new

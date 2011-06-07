@@ -8,9 +8,17 @@
 	<%= @video.title %>
 </h2>
 
-<div style="float:left;">
+<div class="fl">
+	<div class="fl">
+		<%= raw(@video.embed) %>
+	</div>
+	<div class="fr">
+		<%= link_to "next video", video_path(@next), :class => "controls", :id => "next" %>
+		<%= link_to "previous video", video_path(@previous), :class => "controls", :id => "previous" %>
+		<%= link_to "random video", video_path(@random), :class => "controls", :id => "random" %>
+	</div>
 
-	<%= raw(@video.embed) %>
+	<div class="clear"></div>
 
 <p id="meta">
   <%= @video.description %><br />

@@ -37,6 +37,11 @@ class Video < ActiveRecord::Base
     return self.votes_up - self.votes_down
   end
   
+  def random
+    if (c = count) != 0
+      find(:first, :offset =>rand(c))
+    end
+  end
   
   def vote_up(user)
     @vote = Vote.create(:vote => "up", :user_id => user.id, :votable_id => self.id, :votable_type => "Video")

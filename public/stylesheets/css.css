@@ -235,6 +235,28 @@ nav.pagination { float: left; }
 
 p#meta { margin: 15px 0; }
 
+.controls {
+	display:block;
+	height:15px;
+	margin: 0 0 5px 5px;
+	width: 55px;
+}
+
+a#next {
+	background:url("../images/next_arrow.png") no-repeat scroll #3F3F3F;
+	padding:85px 25px 5px;
+}
+a#previous {
+	background:url("../images/previous_arrow.png") no-repeat scroll #3F3F3F;
+	padding:85px 16px 5px 35px;
+	text-indent:-18px;
+}
+a#random{
+	background:url("../images/random.png") no-repeat scroll #3F3F3F;
+	padding:85px 16px 5px 35px;
+	text-indent:-18px;
+}
+a#next:hover, a#previous:hover, a#random:hover { background-position: 0 -100px;}
 
 /************  COMMENTS  ******************/
 .comment_votes {
