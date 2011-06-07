@@ -43,8 +43,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @video = @comment.video
     @comment.destroy
-    redirect_to comments_url, :notice => "Successfully destroyed comment."
+    redirect_to @video, :notice => "Successfully deleted comment."
   end
   
   def vote_up

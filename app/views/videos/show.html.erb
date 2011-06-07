@@ -19,6 +19,9 @@
 	<% if current_user == @video.user && Time.now < (@video.created_at + 1.hour ) %>
 		<%= link_to "edit", edit_video_path(@video) %>
 	<% end %>
+	<% if current_user == @video.user %>
+		<%= link_to "delete", video_path(@video), :method => :delete, :confirm => "Are you sure you want to delete this video?" %>
+	<% end %>
 </p>
 
 <div class="addthis_toolbox addthis_default_style addthis_32x32_style">

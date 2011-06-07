@@ -1,6 +1,6 @@
 <% title "Edit Video" %>
 
-<%= raw(@video.embed) %>
+<h2>Edit Your Video</h2>
 
 <%= form_for @video do |f| %>
   <p>
@@ -13,3 +13,5 @@
   </p>
   <p><%= f.submit "Update Video", :class => "button" %></p>
 <% end %>
+
+<%= raw(@video.embed) %>

@@ -65,7 +65,7 @@ class VideosController < ApplicationController
   def destroy
     @video = Video.find(params[:id])
     @video.destroy
-    redirect_to videos_url, :notice => "Successfully destroyed video."
+    redirect_to videos_url, :notice => "Successfully deleted video."
   end
   
   def best

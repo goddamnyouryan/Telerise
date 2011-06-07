@@ -8,6 +8,9 @@
 		<%= link_to @comment.user.login, user_path(@comment.user) %> 
 		<%= time_ago_in_words(@comment.created_at) %> ago <br />
 		<%= link_to "video", video_path(@comment.video) %>
+		<% if current_user == @comment.user %>
+			|  <%= link_to "delete", comment_path(@comment), :method => :delete, :confirm => "Are you sure you want to delete this comment?" %>
+		<% end %>
 	</h5>
 </div>
 </li>
