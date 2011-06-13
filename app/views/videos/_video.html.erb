@@ -1,33 +1,42 @@
 <li id="<%= video.id %>_video">
-	<div id="<%= video.id %>_votes" class="video_votes"><%= render :partial => "videos/votes", :locals => { :video => video } %></div>
+	<div id="<%= video.id %>_votes" class="video_votes">
+		<%= render :partial => "videos/votes", :locals => { :video => video } %>
+	</div>
+	
 	<%= link_to show_video_ajax_path(:video_id => video.id), :remote => true do %>
 		<%= image_tag "#{video.thumb}", :height => "75px", :class => "fl small_thumb" %>
 	<% end %>
+	
 	<div class="video_data">
-		<h3 id="<%= video.id %>_title"><%= link_to "#{video.title}", show_video_ajax_path(:video_id => video.id), :remote => true %></h3>
+		<h3 id="<%= video.id %>_title">
+			<%= link_to "#{video.title}", show_video_ajax_path(:video_id => video.id), :remote => true %>
+		</h3>
+		
 		<p>
 			Submitted by: <%= link_to video.user.login, user_path(video.user) %> 
 			<%= time_ago_in_words(video.created_at) %> ago
-			<%= link_to "#{pluralize(video.comments.count, "comment")}", video %> | 
+			from <%= link_to "#{video.provider}", video.url, :target => "_blank" %> - 
+			<%= link_to "#{pluralize(video.comments.count, "comment")}", video %> - 
 			<%= link_to "share", share_toggle_path(:video_id => video.id), :remote => true %>
 			<% if current_user == video.user && Time.now < (video.created_at + 1.hour ) %>
-				| <%= link_to "edit", edit_video_path(video) %>
+				- <%= link_to "edit", edit_video_path(video) %>
 			<% end %>
 			<% if current_user == video.user %>
-				| <%= link_to "delete", video_path(video), :method => :delete, :confirm => "Are you sure you want to delete this video?" %>
+				- <%= link_to "delete", video_path(video), :method => :delete, :confirm => "Are you sure you want to delete this video?" %>
 			<% end %>
 		</p>
 		<div class="addthis_toolbox addthis_default_style" style="margin-top:10px;display:none;" id="share_<%= video.id %>">
-		<a class="addthis_button_preferred_1" addthis:url="<%= video_url(video)%>"></a>
-		<a class="addthis_button_preferred_2" addthis:url="<%= video_url(video)%>"></a>
-		<a class="addthis_button_preferred_3" addthis:url="<%= video_url(video)%>"></a>
-		<a class="addthis_button_preferred_4" addthis:url="<%= video_url(video)%>"></a>
-		<a class="addthis_button_compact" addthis:url="<%= video_url(video)%>"></a>
-		<a class="addthis_counter addthis_bubble_style" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_button_preferred_1" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_button_preferred_2" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_button_preferred_3" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_button_preferred_4" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_button_compact" addthis:url="<%= video_url(video)%>"></a>
+			<a class="addthis_counter addthis_bubble_style" addthis:url="<%= video_url(video)%>"></a>
 		</div>
 		<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
 		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4dec161d36779167"></script>
 	</div>
+	<div class="clear"></div>
 </li>
 
 <div class="clear"></div>

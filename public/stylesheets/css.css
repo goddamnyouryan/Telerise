@@ -77,17 +77,21 @@ header h2 { font-size: 11px; display: inline; font-weight:normal; }
 
 .fixed { position: fixed; width:100%;}
 
-div#new-video, div#login { 
+div#new-video, div#login{ 
 	background:#3F3F3F;
 	padding: 10px 0;
 	display:none;
 }
 
+footer { background:#3F3F3F; padding: 10px 0; }
+
 div#new-video form, div#login ul { width: 960px; margin: 0 auto 15px; }
 
 div#login ul h2 { margin-bottom:25px; }
 
-div#login ul li {
+footer ul { width: 960px; margin: 15px auto; }
+
+div#login ul li, footer ul li {
 	display: inline;
 	margin-right: 40px;
 }

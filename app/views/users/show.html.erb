@@ -1,6 +1,7 @@
 <% title "#{@user.login}" %>
 
-<h2><%= @user.login %></h2>
+<div id="user_data">
+<h2><%= @user.login %> (<%= @videos.count %> videos)</h2>
 <p>
   <strong>Video Karma:</strong>
   <%= @user.video_karma %>
@@ -10,10 +11,9 @@
   <strong>Comment Karma:</strong>
   <%= @user.comment_karma %>
 </p>
+</div>
 
-<h2>Videos Submitted by <%= @user.login %> (<%= @videos.count %>)</h2>
-
-<div style="float:left;">
+<div style="float:left;margin-top:25px;">
 
 <ul id="video">
 		<%= render @videos.reverse %>

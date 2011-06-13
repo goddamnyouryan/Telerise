@@ -41,7 +41,7 @@ class VideosController < ApplicationController
       @video.thumb_width = @embedly.thumbnail_width
       if @video.save
         @video.vote_up(current_user)
-        redirect_to @video, :notice => "Successfully submitted video."
+        redirect_to new_submissions_path, :notice => "Successfully submitted video."
       else
         render :action => 'new'
       end
