@@ -1,4 +1,4 @@
-<% title "Video" %>
+<% title "- #{@video.title}" %>
 
 <div id="<%= @video.id %>_votes" style="position:absolute;margin-left:-50px;" class="video_votes">
 	<%= render :partial => 'votes', :locals => { :video => @video } %>
