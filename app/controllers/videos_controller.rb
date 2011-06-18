@@ -2,7 +2,7 @@ class VideosController < ApplicationController
   before_filter :current_user_login, :only => :create
   
   def index
-    @videos = Video.all.sort_by(&:hot).reverse
+    @videos = Video.all.sort_by(&:created_at).reverse
     @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
 
@@ -41,7 +41,7 @@ class VideosController < ApplicationController
       @video.thumb_width = @embedly.thumbnail_width
       if @video.save
         @video.vote_up(current_user)
-        redirect_to new_submissions_path, :notice => "Successfully submitted video."
+        redirect_to root_path, :notice => "Successfully submitted video."
       else
         render :action => 'new'
       end
@@ -77,8 +77,8 @@ class VideosController < ApplicationController
     @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
   
-  def new_submissions
-    @videos = Video.all.sort_by(&:created_at).reverse
+  def currently_popular
+    @videos = Video.all.sort_by(&:hot).reverse
     @videos = Kaminari.paginate_array(@videos).page(params[:page]).per(25)
   end
   

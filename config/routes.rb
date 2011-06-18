@@ -14,7 +14,7 @@ Telerise::Application.routes.draw do
   
   # sorting video routes
   match "/all-time-best" => "videos#best", :as => :best
-  match "/new" => "videos#new_submissions", :as => :new_submissions
+  match "/currently-popular" => "videos#currently_popular", :as => :currently_popular
   match "/controversial" => "videos#controversial"
   
   # voting routes

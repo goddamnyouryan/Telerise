@@ -1,0 +1,11 @@
+<% title "Newly Submitted Videos" %>
+
+<%= render :partial => 'nav' %>
+
+<ul id="video">
+		<%= render @videos %>
+</ul>
+
+<%= render :partial => 'ads_300x250' %>
+
+<%= paginate @videos %>

@@ -45,9 +45,9 @@
 	<footer>
 		<ul>
 			<li>©<%= Time.now.year %> <%= link_to "Telerise", root_path %></li>
-			<li><%= link_to_unless_current "Currently Popular", root_path %></li>
+			<li><%= link_to_unless_current "Newest", root_path %></li>
+			<li><%= link_to_unless_current "Currently Popular", currently_popular_path %></li>
 			<li><%= link_to_unless_current "All Time Best", best_path %></li>
-			<li><%= link_to_unless_current "New", new_submissions_path %></li>
 			<li><%= link_to_unless_current "Controversial", controversial_path %></li>
 		</ul>
 	</footer>
